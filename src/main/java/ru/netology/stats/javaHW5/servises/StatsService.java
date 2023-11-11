@@ -10,11 +10,7 @@ public class StatsService {
     }
 
     public long averageAmount(long[] sales) {
-        long sum = 0;
-        for (int i = 0; i < sales.length; i++) {
-            sum = sum + sales[i];
-        }
-        return sum / sales.length;
+        return sumOfAllSales(sales) / sales.length;
     }
 
     public long peakSales(long[] sales) {
@@ -42,14 +38,9 @@ public class StatsService {
     }
 
     public long belowTheAverage(long[] sales) {
-        long sum = 0;
         long month = 0;
         for (int i = 0; i < sales.length; i++) {
-            sum = sum + sales[i];
-        }
-        long avg = sum / sales.length;
-        for (int i = 0; i < sales.length; i++) {
-            if (sales[i] < avg) {
+            if (sales[i] < averageAmount(sales)) {
                 month++;
             }
         }
@@ -57,14 +48,9 @@ public class StatsService {
     }
 
     public long aboveAverage(long[] sales) {
-        long sum = 0;
         long month = 0;
         for (int i = 0; i < sales.length; i++) {
-            sum = sum + sales[i];
-        }
-        long avg = sum / sales.length;
-        for (int i = 0; i < sales.length; i++) {
-            if (sales[i] > avg) {
+            if (sales[i] > averageAmount(sales)) {
                 month++;
             }
         }
